@@ -1,0 +1,23 @@
+#content_section {
+    margin-top: 150px;
+    margin-bottom: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.card-fixed-height {
+    width: 18rem;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-fixed {
+    height: 400px;
+    object-fit: cover;
+}
+
+.card-body {
+    flex-grow: 1;
+    padding: 20px;
+}

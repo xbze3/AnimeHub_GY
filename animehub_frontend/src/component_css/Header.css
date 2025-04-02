@@ -1,0 +1,28 @@
+#header_section {
+    height: 90vh;
+    /* background-color: rgba(34, 23, 32, 0.99); */
+    background-image: url(../assets/header_background.png);
+    display: flex;
+}
+
+#header_text {
+    color: white;
+    margin-top: 110px;
+    margin-left: 60px;
+}
+
+#header_text > h1 {
+    font-size: 70px;
+}
+
+#anime_hub_1_img {
+    height: 100px;
+    margin-top: 60vh;
+    margin-left: 80px;
+}
+
+.transition {
+    width: 100%;
+    position: absolute;
+    margin-top: -50px;
+}
