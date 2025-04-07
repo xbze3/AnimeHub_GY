@@ -12,6 +12,14 @@
     flex-direction: column;
 }
 
+.card-fixed-height:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    border-color: #ffdc74;
+    transition: 0.3s ease;
+}
+
 .card-img-fixed {
     height: 400px;
     object-fit: cover;
