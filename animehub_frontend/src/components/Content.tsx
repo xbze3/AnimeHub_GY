@@ -19,7 +19,7 @@ function Content() {
                     </Card.Body>
                 </Card>
 
-                {/* <Card className="card-fixed-height">
+                <Card className="card-fixed-height">
                     <Card.Img
                         variant="top"
                         className="card-img-fixed"
@@ -89,7 +89,7 @@ function Content() {
                     </Card.Body>
                 </Card>
 
-                <Card className="card-fixed-height">
+                {/* <Card className="card-fixed-height">
                     <Card.Img
                         variant="top"
                         className="card-img-fixed"
