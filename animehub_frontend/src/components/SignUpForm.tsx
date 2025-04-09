@@ -44,7 +44,7 @@ function SignUpForm() {
     }
 
     return (
-        <div id="login_body">
+        <div id="login_body" className="signup-wrapper">
             <div>
                 <img src={logo} alt="" id="loginLogo" />
             </div>
@@ -90,6 +90,29 @@ function SignUpForm() {
                             required
                         />
                     </div>
+
+                    <div className="input">
+                        <input
+                            placeholder="Address"
+                            type="text"
+                            name="address"
+                            // value={details.address}
+                            // onChange={handleCheck}
+                            required
+                        />
+                    </div>
+
+                    <div className="input">
+                        <input
+                            placeholder="Phone Number"
+                            type="tel"
+                            name="phone"
+                            // value={details.phone}
+                            // onChange={handleCheck}
+                            required
+                        />
+                    </div>
+
                     <div className="submit-container">
                         <button type="submit" className="submit">
                             Sign Up

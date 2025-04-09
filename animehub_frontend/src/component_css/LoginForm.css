@@ -148,3 +148,44 @@
 #signup-Login:hover {
     cursor: pointer;
 }
+
+.signup-wrapper .login_container {
+    width: 400px;
+    padding-bottom: 20px;
+}
+
+.signup-wrapper .login_header {
+    padding-top: 20px;
+}
+
+.signup-wrapper .text {
+    font-size: 36px;
+}
+
+.signup-wrapper .inputs {
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.signup-wrapper .input {
+    width: 300px;
+    height: 45px;
+}
+
+.signup-wrapper .input input {
+    font-size: 17px;
+    width: 280px;
+    height: 35px;
+}
+
+.signup-wrapper .submit {
+    width: 200px;
+    height: 50px;
+    font-size: 17px;
+}
+
+@media screen and (max-width: 1050px) {
+    #loginLogo {
+        display: none;
+    }
+}
