@@ -45,9 +45,14 @@ class User(Document):
 class Order(Document):
     user = ReferenceField(User, required=True)
     product_ids = ListField(ReferenceField(Product), required=True)
+    product_titles = ListField(StringField(), required=True)
     date = DateTimeField(default=datetime.utcnow)
+    email = StringField(required=True)
+    address = StringField(required=True)
 
     meta = {'collection': 'orders'}
+    
+
 
 @app.route("/products", methods=["GET"])
 def get_all_products():
@@ -82,14 +87,18 @@ def place_order():
             return jsonify({"error": "User not found"}), 404
 
         object_ids = [ObjectId(pid) for pid in product_ids]
-
         products = Product.objects(id__in=object_ids)
         if not products:
             return jsonify({"error": "No valid products found"}), 400
 
+        product_titles = [product.title for product in products]
+
         order = Order(
             user=user,
-            product_ids=products
+            product_ids=products,
+            product_titles=product_titles,
+            email=user.email,
+            address=user.address
         )
         order.save()
 
