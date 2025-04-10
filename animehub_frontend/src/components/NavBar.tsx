@@ -5,6 +5,9 @@ import Navbar from "react-bootstrap/Navbar";
 import "../component_css/NavBar.css";
 
 function NavBar() {
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
+
     return (
         <Navbar bg="dark" data-bs-theme="dark">
             <Container>
@@ -13,9 +16,15 @@ function NavBar() {
                 </Navbar.Brand>
                 <Nav className="me-auto">{/* Left aligned links */}</Nav>
                 <Nav className="ms-auto">
-                    <Nav.Link as={Link} to={`/signup`}>
-                        Login / Sign Up
-                    </Nav.Link>
+                    {token && username ? (
+                        <Nav.Link disabled style={{ color: "white" }}>
+                            Welcome {username}
+                        </Nav.Link>
+                    ) : (
+                        <Nav.Link as={Link} to={`/signup`}>
+                            Login / Sign Up
+                        </Nav.Link>
+                    )}
                 </Nav>
             </Container>
         </Navbar>

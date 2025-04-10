@@ -30,6 +30,7 @@ function LoginForm() {
                 console.log(data);
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("username", data.username);
+                localStorage.setItem("ID", data.user_id);
                 console.log(data);
                 window.location.replace("http://localhost:5173/");
             } else {

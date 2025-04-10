@@ -29,3 +29,8 @@
     flex-grow: 1;
     padding: 20px;
 }
+
+.selected-card {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.8);
+}
