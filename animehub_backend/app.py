@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS 
 from datetime import datetime
 import mongoengine as db
+from flask_jwt_extended import create_access_token
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from dotenv import load_dotenv
@@ -78,7 +79,12 @@ def signup():
         phone_number=data.get('phone_number', '')
     )
     user.save()
-    return jsonify({"message": "User created successfully"}), 201
+
+    access_token = create_access_token(identity=str(user.id))
+    return jsonify({
+        "message": "User created successfully",
+        "username": user.username,
+        "token": access_token}), 201
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -89,7 +95,14 @@ def login():
     if not user or not check_password_hash(user.password, data['password']):
         return jsonify({"error": "Invalid credentials"}), 401
 
-    return jsonify({"message": "Login successful", "user_id": str(user.id)}), 200
+    access_token = create_access_token(identity=str(user.id))
+
+    return jsonify({
+        "message": "Login successful",
+        "user_id": str(user.id),
+        "username": user.username,
+        "token": access_token
+    }), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
