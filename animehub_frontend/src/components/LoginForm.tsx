@@ -28,7 +28,9 @@ function LoginForm() {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data);
-                // localStorage.setItem("token", data.token);
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("username", data.username);
+                console.log(data);
                 window.location.replace("http://localhost:5173/");
             } else {
                 const errorData = await response.json();

@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS 
 from datetime import datetime
 import mongoengine as db
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, JWTManager
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from dotenv import load_dotenv
@@ -13,6 +13,8 @@ load_dotenv()
 app = Flask(__name__)
 
 CORS(app)
+app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY")
+jwt = JWTManager(app)
 
 db.connect(
     db=os.getenv("MONGODB_DB"),
