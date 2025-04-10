@@ -7,7 +7,7 @@
 
 .card-fixed-height {
     width: 18rem;
-    height: 540px;
+    height: 630px;
     display: flex;
     flex-direction: column;
 }

@@ -1,43 +1,46 @@
 import "../component_css/LoginForm.css";
-// import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import logo from "../assets/anime_hub_1.png";
 
 function SignUpForm() {
-    // const [details, setDetails] = useState({
-    //     username: "",
-    //     email: "",
-    //     password: "",
-    // });
-    // const [error, setError] = useState<string | null>(null);
+    const [details, setDetails] = useState({
+        username: "",
+        email: "",
+        password: "",
+        address: "",
+        phone_number: "",
+    });
+    const [error, setError] = useState<string | null>(null);
 
-    // const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
-    //     const { name, value } = e.target;
-    //     setDetails((prev) => ({ ...prev, [name]: value }));
-    // };
+    const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setDetails((prev) => ({ ...prev, [name]: value }));
+    };
 
-    // const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     try {
-    //         const response = await fetch("http://localhost:8081/api/signup", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(details),
-    //         });
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:5000/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(details),
+            });
 
-    //         if (response.ok) {
-    //             const data = await response.json();
-    //             localStorage.setItem("token", data.token);
-    //             window.location.replace("http://localhost:5173/home");
-    //         } else {
-    //             const errorData = await response.json();
-    //             setError(errorData.message || "Sign Up failed");
-    //         }
-    //     } catch (err) {
-    //         setError("An error occurred. Please try again.");
-    //     }
-    // };
+            if (response.ok) {
+                // const data = await response.json();
+                // console.log(data);
+                // localStorage.setItem("token", data.token);
+                window.location.replace("http://localhost:5173/");
+            } else {
+                const errorData = await response.json();
+                setError(errorData.message || "Sign Up failed");
+            }
+        } catch (err) {
+            setError("An error occurred. Please try again.");
+        }
+    };
 
     function forwardLogin() {
         window.location.replace("http://localhost:5173/login");
@@ -54,17 +57,16 @@ function SignUpForm() {
                     <div className="underline"></div>
                 </div>
 
-                {/* {error && <div className="error-message">{error}</div>} */}
+                {error && <div className="error-message">{error}</div>}
 
-                {/* <form className="inputs" onSubmit={handleSubmit}> */}
-                <form className="inputs">
+                <form className="inputs" onSubmit={handleSubmit}>
                     <div className="input">
                         <input
                             type="text"
                             placeholder="Username"
                             name="username"
-                            // value={details.username}
-                            // onChange={handleCheck}
+                            value={details.username}
+                            onChange={handleCheck}
                             required
                         />
                     </div>
@@ -74,8 +76,8 @@ function SignUpForm() {
                             type="text"
                             placeholder="Email"
                             name="email"
-                            // value={details.email}
-                            // onChange={handleCheck}
+                            value={details.email}
+                            onChange={handleCheck}
                             required
                         />
                     </div>
@@ -85,8 +87,8 @@ function SignUpForm() {
                             placeholder="Password"
                             type="password"
                             name="password"
-                            // value={details.password}
-                            // onChange={handleCheck}
+                            value={details.password}
+                            onChange={handleCheck}
                             required
                         />
                     </div>
@@ -96,8 +98,8 @@ function SignUpForm() {
                             placeholder="Address"
                             type="text"
                             name="address"
-                            // value={details.address}
-                            // onChange={handleCheck}
+                            value={details.address}
+                            onChange={handleCheck}
                             required
                         />
                     </div>
@@ -106,9 +108,9 @@ function SignUpForm() {
                         <input
                             placeholder="Phone Number"
                             type="tel"
-                            name="phone"
-                            // value={details.phone}
-                            // onChange={handleCheck}
+                            name="phone_number"
+                            value={details.phone_number}
+                            onChange={handleCheck}
                             required
                         />
                     </div>

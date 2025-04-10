@@ -1,5 +1,6 @@
 from mongoengine import Document, StringField, EmailField, ListField, ReferenceField, FloatField, DateTimeField
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS 
 from datetime import datetime
 import mongoengine as db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -9,6 +10,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+
+CORS(app)
 
 db.connect(
     db=os.getenv("MONGODB_DB"),
@@ -42,6 +45,21 @@ class Order(Document):
     date = DateTimeField(default=datetime.utcnow)
 
     meta = {'collection': 'orders'}
+
+@app.route("/products", methods=["GET"])
+def get_all_products():
+    products = Product.objects()
+
+    return jsonify([
+        {
+            "id": str(product.id),
+            "title": product.title,
+            "image": product.image,
+            "description": product.description,
+            "price": product.price
+        }
+        for product in products
+    ]), 200
 
 @app.route("/signup", methods=["POST"])
 def signup():
