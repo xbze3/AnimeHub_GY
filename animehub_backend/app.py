@@ -1,5 +1,5 @@
 from mongoengine import Document, StringField, EmailField, ListField, ReferenceField, FloatField, DateTimeField
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request
 from flask_cors import CORS 
 from datetime import datetime
 import mongoengine as db
