@@ -98,7 +98,11 @@ function Content() {
         <section id="content_section" className="content-container">
             <div className="d-flex justify-content-end pe-5 mb-3">
                 {selected.length > 0 && (
-                    <Button variant="success" onClick={handleCheckout}>
+                    <Button
+                        variant="success"
+                        onClick={handleCheckout}
+                        id="checkout-button"
+                    >
                         Checkout ({selected.length})
                     </Button>
                 )}
